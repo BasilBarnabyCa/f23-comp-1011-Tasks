@@ -1,14 +1,16 @@
 package com.example.f23comp1011tasks;
 
+import java.util.regex.Pattern;
+
 public class User {
     private String email, userName, phone;
 
     // Constructors
     /**
      * This is the constructor that will be called whenever we create an instance of the User class
-     * @param email - the email address of the user
-     * @param userName - the username of the user
-     * @param phone - the phone number of the user
+     * @param email The email address of the user
+     * @param userName The username of the user
+     * @param phone The phone number of the user
      */
     public User(String email, String userName, String phone) {
        setEmail(email);
@@ -23,11 +25,25 @@ public class User {
 
     /**
      * This method will validate the email address and set the instance variable
-     * @param email - the email address of the user
+     * @param email The email address of the user
      */
     public void setEmail(String email) {
+        if(isEmailValid(email))
+            this.email = email;
+        else
+            throw new IllegalArgumentException("Email must match the RC822 standard");
         this.email = email;
     }
+
+    /**
+     * This method will validate the email address and set the instance variable
+     * @param email The email address of the user
+     */
+    public static boolean isEmailValid(String email) {
+        final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
+        return EMAIL_REGEX.matcher(email).matches();
+    }
+
 
     public String getUserName() {
         return userName;
@@ -36,7 +52,7 @@ public class User {
     /**
      * This method will validate the username and set the instance variable
      * Cannot be null or empty
-     * @param userName - the username of the user
+     * @param userName The username of the user
      */
     public void setUserName(String userName) {
         userName = userName.trim();
