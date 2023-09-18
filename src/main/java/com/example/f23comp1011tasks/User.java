@@ -21,6 +21,10 @@ public class User {
         return email;
     }
 
+    /**
+     * This method will validate the email address and set the instance variable
+     * @param email - the email address of the user
+     */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -29,7 +33,20 @@ public class User {
         return userName;
     }
 
+    /**
+     * This method will validate the username and set the instance variable
+     * Cannot be null or empty
+     * @param userName - the username of the user
+     */
     public void setUserName(String userName) {
+        userName = userName.trim();
+
+        if (userName.matches("[A-z1-9]+")) {
+           this.userName = userName;
+        } else {
+            throw new IllegalArgumentException("Username must be only letters and numbers and must have at least one character");
+        }
+
         this.userName = userName;
     }
 
