@@ -19,6 +19,7 @@ class UserTest {
         newUser.setEmail("basil@georgian.ca");
     }
 
+    //TODO: Need to fix the failing User tests
     @Test
     void setInvalidUserEmail() {
         assertThrows(IllegalArgumentException.class, () -> newUser.setEmail(""));

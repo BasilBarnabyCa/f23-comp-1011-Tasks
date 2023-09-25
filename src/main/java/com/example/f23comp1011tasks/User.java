@@ -71,6 +71,17 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        phone = phone.replaceAll("[^0-9]", "");
+
+        // North American dialing plan
+        //3 digit - area code [2-9]
+        //3 digit - city code [2-9]
+        //4 digit - line number [0-9]{4}
+
+        if(phone.matches("[2-9][0-9]{2}[2-9][0-9]{6}")) {
+            this.phone = phone;
+        } else {
+            throw new IllegalArgumentException("Phone number must be 10 digits and follow the North American dialing plan");
+        }
     }
 }
