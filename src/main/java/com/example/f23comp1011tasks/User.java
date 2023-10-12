@@ -1,5 +1,11 @@
 package com.example.f23comp1011tasks;
 
+import java.lang.reflect.Array;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class User {
@@ -83,5 +89,10 @@ public class User {
         } else {
             throw new IllegalArgumentException("Phone number must be 10 digits and follow the North American dialing plan");
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, (%s),", email, userName);
     }
 }

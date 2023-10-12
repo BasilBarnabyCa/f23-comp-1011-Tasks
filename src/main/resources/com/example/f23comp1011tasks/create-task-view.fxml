@@ -42,11 +42,11 @@
                   <TextArea fx:id="descriptionTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <DatePicker fx:id="dueDatePicker" prefWidth="700.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox fx:id="userComboBox" prefWidth="700.0" promptText="Select user" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Spinner fx:id="estimatedLengthSpinner" prefWidth="700.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Spinner fx:id="durationSpinner" prefWidth="700.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <Label text="Response Message" />
-            <Button mnemonicParsing="false" onAction="#saveeTask" text="Save" />
+            <Label fx:id="msgLabel" text="Response Message" />
+            <Button mnemonicParsing="false" onAction="#saveTask" text="Save" />
          </children>
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
