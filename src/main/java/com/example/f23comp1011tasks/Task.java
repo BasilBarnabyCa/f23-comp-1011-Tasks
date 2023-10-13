@@ -22,6 +22,28 @@ public class Task {
         setUser(user);
     }
 
+    /**
+     * This constructor will be used when we are retrieving a task from the database
+     * @param taskID The ID of the task
+     * @param title The title of the task
+     * @param description The description of the task
+     * @param dueDate The due date of the task
+     * @param creationDate The creation date of the task
+     * @param estimatedTimeLengthInMin The estimated time length of the task
+     * @param user The user assigned to the task
+     * @param status The status of the task
+     */
+    public Task(int taskID, String title, String description, LocalDate dueDate, LocalDate creationDate, int estimatedTimeLengthInMin, User user, Status status) {
+        setTaskID(taskID);
+        setTitle(title);
+        setDescription(description);
+        setEstimatedTimeLengthInMin(estimatedTimeLengthInMin);
+        setCreationDate(creationDate);
+        this.dueDate = dueDate;
+        this.user = user;
+        this.status = status;
+    }
+
     // Getters and Setters
     public int getTaskID() {
         return taskID;
@@ -60,6 +82,8 @@ public class Task {
     }
 
     public void setCreationDate(LocalDate creationDate) {
+        if(creationDate.isAfter(LocalDate.now()))
+            throw new IllegalArgumentException("Creation date cannot be in the future");
         this.creationDate = creationDate;
     }
 
