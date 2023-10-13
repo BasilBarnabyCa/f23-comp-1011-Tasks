@@ -1,18 +1,18 @@
 package com.example.f23comp1011tasks;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class TaskController implements Initializable {
-
+public class TasksController implements Initializable {
+    // FXML for create-task-view.fxml
     @FXML
     private TextArea descriptionTextArea;
 
@@ -30,10 +30,8 @@ public class TaskController implements Initializable {
 
     @FXML
     private ComboBox<User> userComboBox;
-
     @FXML
     void saveTask(ActionEvent event) {
-        // TODO: ADD SAVE LOGIC
         if(areFieldsUpdated())
         {
             // Create task object
@@ -56,6 +54,32 @@ public class TaskController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    // FXML for tasks-view.fxml
+    @FXML
+    private TableColumn<?, ?> dueDateColumn;
+
+    @FXML
+    private TableColumn<?, ?> estimateColumn;
+
+    @FXML
+    private TableColumn<?, ?> statusColumn;
+
+    @FXML
+    private TableColumn<?, ?> taskIdColumn;
+
+    @FXML
+    private TableView<?> tasksTableView;
+
+    @FXML
+    private TableColumn<?, ?> titleColumn;
+
+    @FXML
+    private TableColumn<?, ?> userColumn;
+    @FXML
+    void viewCharts(ActionEvent event) {
+
     }
 
     private boolean areFieldsUpdated()
